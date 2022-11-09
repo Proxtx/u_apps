@@ -1,0 +1,23 @@
+{
+  "name": "u_apps",
+  "version": "1.0.0",
+  "description": "Host apps for unify. apps must use the clients to execute any task. Note that this function is / was included with unify core (u). However it will be moved to a seperate repo to create a more modular codebase.",
+  "main": "main.js",
+  "scripts": {
+    "test": "nodemon ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Proxtx/u_apps.git"
+  },
+  "author": "Proxtx",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Proxtx/u_apps/issues"
+  },
+  "homepage": "https://github.com/Proxtx/u_apps#readme",
+  "dependencies": {
+    "@proxtx/config": "^1.0.2",
+    "@proxtx/framework": "^1.5.3"
+  }
+}
