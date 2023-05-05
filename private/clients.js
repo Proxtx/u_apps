@@ -14,10 +14,23 @@ const genClients = async () => {
   }
 };
 
+let rfs = false;
+
 export const refreshClients = async () => {
-  clearClients();
-  await api.refreshClients(config.pwd);
-  await genClients();
+  try {
+    if (rfs) {
+      await rfs;
+      if (rfs) await rfs;
+      return;
+    }
+    clearClients();
+    rfs = api.refreshClients(config.pwd);
+    await rfs;
+    rfs = genClients();
+    await rfs;
+  } catch {
+    rfs = false;
+  }
 };
 
 class Client {
