@@ -16,7 +16,7 @@ const genClients = async () => {
 
 export const refreshClients = async () => {
   clearClients();
-  await api.refreshClients();
+  await api.refreshClients(config.pwd);
   await genClients();
 };
 
