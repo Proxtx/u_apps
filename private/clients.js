@@ -28,6 +28,7 @@ export const refreshClients = async () => {
     await rfs;
     rfs = genClients();
     await rfs;
+    rfs = false;
   } catch {
     rfs = false;
   }
