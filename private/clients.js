@@ -7,31 +7,17 @@ export const clients = {};
 const api = await genCombine(config.unify, "public/api.js", genModule);
 
 const genClients = async () => {
-  let clientNames = await api.getClients(config.pwd);
+  clearClients();
 
+  let clientNames = await api.getClients(config.pwd);
   for (let client of clientNames) {
     clients[client] = new Client(client);
   }
 };
 
-let rfs = false;
-
 export const refreshClients = async () => {
-  try {
-    if (rfs) {
-      await rfs;
-      if (rfs) await rfs;
-      return;
-    }
-    clearClients();
-    rfs = api.refreshClients(config.pwd);
-    await rfs;
-    rfs = genClients();
-    await rfs;
-    rfs = false;
-  } catch {
-    rfs = false;
-  }
+  await api.refreshClients(config.pwd);
+  await genClients();
 };
 
 class Client {
