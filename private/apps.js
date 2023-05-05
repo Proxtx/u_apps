@@ -16,7 +16,11 @@ export const loadApps = async () => {
     );
     let appInstance = new appImport.App(appConfig.config);
     appInstance.definitions = definitions;
-    appInstance.updateDefinitions && (await appInstance.updateDefinitions());
+    try {
+      appInstance.updateDefinitions && (await appInstance.updateDefinitions());
+    } catch (e) {
+      console.log("Error loading", appName, "!\n", e);
+    }
     apps[appName] = appInstance;
   }
 };
