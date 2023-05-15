@@ -16,6 +16,7 @@ export const loadApps = async () => {
     );
     appImport.App.prototype.definitions = definitions;
     let appInstance = new appImport.App(appConfig.config);
+    appInstance.definitions = { ...appInstance.definitions };
     try {
       appInstance.updateDefinitions && (await appInstance.updateDefinitions());
     } catch (e) {
