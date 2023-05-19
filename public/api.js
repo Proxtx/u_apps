@@ -19,7 +19,7 @@ export const resolveArguments = async (pwd, args) => {
   if (!inputApi)
     inputApi = await genCombine(config.inputs, "public/api.js", genModule);
   for (let argIndex in args) {
-    args[argIndex] = await inputApi.resolveInput(args[argIndex]);
+    args[argIndex] = await inputApi.resolveInput(pwd, args[argIndex]);
   }
 
   return args;
